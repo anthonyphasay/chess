@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public class PieceMovesCalculator {
 
-    public Collection<ChessMove> bishopMoves(ChessBoard board, ChessPosition myPosition)
+    public static Collection<ChessMove> bishopMoves(ChessBoard board, ChessPosition myPosition)
     {
         Collection<ChessMove> moves = new ArrayList<>();
         int[][] directions = {{1,1}, {1,-1}, {-1,1}, {-1,-1}};
