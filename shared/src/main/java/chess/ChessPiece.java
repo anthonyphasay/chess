@@ -1,5 +1,6 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -54,9 +55,41 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         ChessPiece piece = board.getPiece(myPosition);
+        ArrayList<ChessMove> moves = new ArrayList<>();
+
         if (piece.getPieceType() == PieceType.BISHOP)
         {
-            return List.of(new ChessMove(new ChessPosition(5,4), new ChessPosition(1,8), null));
+            int currentRow = myPosition.getRow();
+            int currentCol = myPosition.getColumn();
+
+            while(true)
+            {
+                currentRow++;
+                currentCol++;
+                if (currentRow > 8 || currentCol > 8)
+                {
+
+                    break;
+                } else{
+                    moves.add(new ChessMove(myPosition, new ChessPosition(currentRow,currentCol), null));
+                }
+             }
+            currentRow = myPosition.getRow();
+            currentCol = myPosition.getColumn();
+            while(true)
+            {
+                currentRow--;
+                currentCol++;
+                if (currentRow > 1 || currentCol > 8)
+                {
+
+                    break;
+                } else{
+                    moves.add(new ChessMove(myPosition, new ChessPosition(currentRow,currentCol), null));
+                }
+            }
+            return moves;
+
         }
         return List.of();
     }
